@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyShow - Movie Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .ticket-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticket-header {
+            background: #f84464;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ticket-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .booking-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .movie-details {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .poster-container {
+            width: 150px;
+        }
+
+        .poster-container img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .detail-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 24px;
+            background: repeating-linear-gradient(
+                45deg,
+                #f84464,
+                #f84464 12px,
+                #ffffff 12px,
+                #ffffff 24px
+            );
+            margin: 0 -20px;
+        }
+
+        .qr-section {
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ticket-footer {
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .important-notice {
+            background: #fff3e0;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #e65100;
+        }
+
+        .terms {
+            padding: 0 20px 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .terms ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .terms li {
+            margin-bottom: 5px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .movie-details {
+                grid-template-columns: 1fr;
+            }
+
+            .poster-container {
+                width: 120px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <div class="ticket-header">
+            <h1>BOOKMYSHOW</h1>
+            <div class="booking-info">
+                <div>Booking ID: #{bookingId}</div>
+                <div>Transaction ID: #{transactionId}</div>
+            </div>
+        </div>
+
+        <div class="movie-details">
+            <div class="poster-container">
+                <img src="#{posterUrl}" alt="#{movie}" />
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Movie</div>
+                    <div class="detail-value">#{movie}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Theatre</div>
+                    <div class="detail-value">#{theatre}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date & Time</div>
+                    <div class="detail-value">#{date} at #{time}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Seats</div>
+                    <div class="detail-value">#{seats}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Amount Paid</div>
+                    <div class="detail-value">£#{amount}</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Name</div>
+                    <div class="detail-value">#{name}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="qr-section">
+            <div class="qr-code">
+                <img src="#{qrCode}" alt="Scan QR Code" />
+            </div>
+            <p style="margin: 10px 0 0; color: #666;">
+                Scan for verification
+            </p>
+        </div>
+
+        <div class="important-notice">
+            <strong>Important:</strong> Please arrive at least 15 minutes before the show time.
+        </div>
+
+        <div class="terms">
+            <strong>Terms & Conditions:</strong>
+            <ul>
+                <li>This ticket is valid only for the specified show time and date</li>
+                <li>Outside food and beverages are not allowed inside the theatre</li>
+                <li>Recording of the movie is strictly prohibited</li>
+                <li>This ticket is non-refundable and non-transferable</li>
+            </ul>
+        </div>
+
+        <div class="ticket-footer">
+            <div>Thank you for booking with BookMyShow!</div>
+            <div style="margin-top: 5px;">Enjoy your movie! 🎬</div>
+        </div>
+    </div>
+</body>
+</html>
