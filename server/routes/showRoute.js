@@ -7,7 +7,7 @@ const {
     getShowsByTheathres,
     getAllTheathresByMovie,
     getShowById
-} = require("../controllers/ShowController");
+} = require("../controllers/showController");
 
 // POST
 ShowRouter.post("/add-show", addShow);
