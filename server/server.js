@@ -18,7 +18,7 @@ app.get('*', (req, res) => {
 
 app.use(
     cors({
-        origin: "*",
+        origin: ["http://localhost:3000","https://bookmyshowdeployment.onrender.com"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,

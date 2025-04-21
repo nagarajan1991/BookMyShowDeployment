@@ -49,6 +49,7 @@ const isPathAllowed = (userRole, path) => {
   // CHANGE #2: Combine the effects into one
   useEffect(() => {
     const validateUserAndAccess = async () => {
+      console.log("Token is available");
       // If no token, redirect to login
       if (!localStorage.getItem("token")) {
         navigate("/login");
